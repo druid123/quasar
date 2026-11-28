@@ -1,5 +1,45 @@
 # QUASAR — история выпусков
 
+## 6.17.6-1.fc45
+
+- Fixed GNOME Wayland client-side decoration (CSD) frame synchronization for child windows so reopened windows preserve their exact saved inner size instead of shrinking by the frame border size.
+- Fixed modal dialog auto-height and bottom action button clipping on GNOME Wayland (including `Restore tabs` and confirmation dialogs), with `xdg_toplevel` parent attachment and `xdg_dialog_v1` modality.
+- Improved update monitoring reliability: failed startup or periodic checks retry with short exponential backoff, re-check immediately when proxy credentials or route settings change, use GitHub API `ETag` (`304 Not Modified`) caching, and parse release entries individually.
+- Ordinary windows restore their saved size; modal confirmations block other QUASAR windows until dismissed; single-click selects and double-click opens saved SSH connections.
+
+## 6.17.6.1
+
+- Improved modal and auto-sized dialog sizing so unexpected initial compositor resizes or small content overflows do not disable automatic height or clip action buttons.
+- Synchronized with Fedora `6.17.6-1.fc45` from the same source tree.
+
+## 6.17.5.1
+
+- Improved update monitoring reliability: failed startup or periodic checks now retry with short exponential backoff instead of waiting 15 minutes, and re-check immediately once proxy credentials or route settings become ready.
+- Added GitHub API `ETag` (`If-None-Match` / `304 Not Modified`) caching and standard API headers to reduce unauthenticated rate-limit failures, and made release list parsing resilient to individual malformed entries.
+
+## 6.17.4.1
+
+- Восстановление обычных окон учитывает минимальный размер формы. Если окно целиком не помещается, оно открывается по центру рабочей области.
+
+## 6.17.4-1.fc45
+
+- В GNOME Wayland диалоги подтверждения привязаны к окнам, из которых были открыты. Подтверждение остаётся поверх окна-владельца и блокирует действия в других окнах QUASAR до ответа.
+- Размещением обычных окон в сеансе GNOME Wayland управляет Mutter.
+
+## 6.17.3.2
+
+- Обычные окна при первом открытии центрируются в рабочей области монитора. При повторном открытии восстанавливаются размер и позиция. Если окно не помещается на экране, оно открывается по центру доступной рабочей области.
+- Запросы авторизации Microsoft Entra для RDP и восстановления вкладок блокируют взаимодействие с другими окнами QUASAR до закрытия диалога.
+- В сохранённых SSH-подключениях один щелчок выделяет запись, двойной щелчок запускает подключение.
+- Пока открыт запрос подтверждения, попытка закрыть другое окно QUASAR оставляет запрос на экране.
+
+## 6.17.3-1.fc45
+
+- Обычные окна восстанавливают сохранённый размер. В сеансе GNOME Wayland положение окна определяет оконный менеджер.
+- Запрос восстановления вкладок блокирует взаимодействие с другими окнами QUASAR до закрытия диалога.
+- В сохранённых SSH-подключениях один щелчок выделяет запись, двойной щелчок запускает подключение.
+- Пока открыт запрос подтверждения, попытка закрыть другое окно QUASAR оставляет запрос на экране.
+
 ## 6.17.2.1
 
 - При подключении по SSH с запертым хранилищем паролей сначала запрашивается только открытие хранилища, а диалог ввода пароля к серверу не открывается одновременно с ним.
