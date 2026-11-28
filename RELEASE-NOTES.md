@@ -1,5 +1,10 @@
 # QUASAR — история выпусков
 
+## 6.17.5.1
+
+- Improved update monitoring reliability: failed startup or periodic checks now retry with short exponential backoff instead of waiting 15 minutes, and re-check immediately once proxy credentials or route settings become ready.
+- Added GitHub API `ETag` (`If-None-Match` / `304 Not Modified`) caching and standard API headers to reduce unauthenticated rate-limit failures, and made release list parsing resilient to individual malformed entries.
+
 ## 6.17.4.1
 
 - Восстановление обычных окон учитывает минимальный размер формы. Если окно целиком не помещается, оно открывается по центру рабочей области.
