@@ -1,5 +1,17 @@
 # QUASAR — история выпусков
 
+## 6.17.6.1
+
+- Improved modal and auto-sized dialog sizing so unexpected initial compositor resizes or small content overflows do not disable automatic height or clip action buttons.
+- Synchronized with Fedora `6.17.6-1.fc45` from the same source tree.
+
+## 6.17.6-1.fc45
+
+- Fixed GNOME Wayland client-side decoration (CSD) frame synchronization for child windows so reopened windows preserve their exact saved inner size instead of shrinking by the frame border size.
+- Fixed modal dialog auto-height and bottom action button clipping on GNOME Wayland (including `Restore tabs` and confirmation dialogs), with `xdg_toplevel` parent attachment and `xdg_dialog_v1` modality.
+- Improved update monitoring reliability: failed startup or periodic checks retry with short exponential backoff, re-check immediately when proxy credentials or route settings change, use GitHub API `ETag` (`304 Not Modified`) caching, and parse release entries individually.
+- Ordinary windows restore their saved size; modal confirmations block other QUASAR windows until dismissed; single-click selects and double-click opens saved SSH connections.
+
 ## 6.17.5.1
 
 - Improved update monitoring reliability: failed startup or periodic checks now retry with short exponential backoff instead of waiting 15 minutes, and re-check immediately once proxy credentials or route settings become ready.
